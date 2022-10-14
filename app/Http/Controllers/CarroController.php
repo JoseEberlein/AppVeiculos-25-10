@@ -4,27 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use App\Models\Caminhao;
+use App\Models\Carro;
 
-class CaminhaoController extends Controller
+class CarroController extends Controller
 {
-    public function FormularioCadastro(){
-        return view('cadastrarCaminhao');
+    public function FormularioCadastroCarro(){
+        return view('cadastrarCarro');
     } 
 
-    public function Editar(){
-        return view('editarCaminhao');
+    public function EditarCarro(){
+        return view('editarCarro');
     }
 
-    public function SalvarBanco(Request $request){
-        $dadosCaminhao = $request->validate([
+    public function SalvarBancoCarro(Request $request){
+        $dadosCarro = $request->validate([
             'modelo' => 'string|required',
             'marca' => 'string|required',
             'ano' => 'string|required',
             'cor' => 'string|required',
             'valor' => 'string|required'
         ]);
-        Caminhao::create($dadosCaminhao);
+        Carro::create($dadosCarro);
         return Redirect::route('home');
     }
      
