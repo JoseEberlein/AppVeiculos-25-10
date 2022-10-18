@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('cor');
             $table->string('valor');
             $table->timestamps();
-            
-            $table->timestamps();
         });
     }
 

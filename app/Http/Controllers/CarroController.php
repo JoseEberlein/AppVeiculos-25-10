@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use App\Models\Carro;
+use App\Models\Carros;
 
 class CarroController extends Controller
 {
@@ -12,8 +12,12 @@ class CarroController extends Controller
         return view('cadastrarCarro');
     } 
 
-    public function EditarCarro(){
-        return view('editarCarro');
+    public function MostrarEditarCarro(){
+
+        $dadosCarro = Carros::all();
+        //dd($dadosCaminhao);
+    
+        return view('editarCarro', ['registrosCarro' => $dadosCarro]);
     }
 
     public function SalvarBancoCarro(Request $request){
@@ -24,7 +28,7 @@ class CarroController extends Controller
             'cor' => 'string|required',
             'valor' => 'string|required'
         ]);
-        Carro::create($dadosCarro);
+        Carros::create($dadosCarro);
         return Redirect::route('home');
     }
      

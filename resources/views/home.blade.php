@@ -1,6 +1,6 @@
 @extends('padrao')
 @section('content')
 <section>
-    <img src="{{'/img/telaprincipal.gif'}}" />
+    <img src="{{'/img/imagem-carro7.jpg'}}" />
 </section>
 @endsection

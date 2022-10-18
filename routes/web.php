@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CaminhaoController;
-
+use App\Http\Controllers\CarroController;
+use App\Http\Controllers\ListaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,14 @@ Route::get('/', function () {
 
 
 Route::get('/',[HomeController::class,'MostrarHome'])->name('home');
-Route::get('/editar-caminhao',[CaminhaoController::class,'Editar']);
+Route::get('/editar-caminhao',[CaminhaoController::class,'MostrarEditarCaminhao']);
 Route::get('/cadastrar-caminhao',[CaminhaoController::class,'FormularioCadastro'])->name('cadastrar-caminhao');
 Route::post('/cadastrar-caminhao', [CaminhaoController::class,'SalvarBanco'])->name('salvar-banco');
+
+
+
 Route::get('/cadastrar-carro', [CarroController::class,'FormularioCadastroCarro'])->name('cadastrar-carro');
-Route::post('/cadastrar-carro', [CarroController::class,'SalvarBancoCarro'])->name('salvar-banco');
-Route::get('/editar-carro',[CarroController::class,'EditarCarro']);
+Route::post('/cadastrar-carro', [CarroController::class,'SalvarBancoCarro'])->name('salvar-banco-carro');
+Route::get('/editar-carro',[CarroController::class,'editarCarro']);
+
+Route::get('/ListarCarro',[ListaController::class,'mostrar']);
