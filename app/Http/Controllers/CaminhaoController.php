@@ -31,5 +31,11 @@ class CaminhaoController extends Controller
         Caminhaos::create($dadosCaminhao);
         return Redirect::route('home');
     }
-     
+    
+    public function ApagarBancoCaminhao(Caminhaos $registrosCaminhoes){
+        //dd($registrosCaminhoes);
+        $registrosCaminhoes->delete();
+        //Caminhao::findOrFail($id)->delete();
+        return Redirect::route('editar-caminhao');
+    }
 }
