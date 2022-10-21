@@ -38,4 +38,8 @@ class CarroController extends Controller
         //Caminhao::findOrFail($id)->delete();
         return Redirect::route('editar-carro');
     }
+
+    public function MostrarAlterarCarro(Carros $registrosCarros){
+        return view('alterarCarro',['registrosCarros' => $registrosCarros]);
+}
 }

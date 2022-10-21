@@ -39,7 +39,7 @@ class CaminhaoController extends Controller
         return Redirect::route('editar-caminhao');
     }
 
-    public function MostrarAlterarCaminhao(Caminhao $registrosCaminhoes){
-        return view('alterar-caminhao',['registrosCaminhoes' => $registrosCaminhoes]);
+    public function MostrarAlterarCaminhao(Caminhaos $registrosCaminhoes){
+        return view('alterarCaminhao',['registrosCaminhoes' => $registrosCaminhoes]);
 }
 }
