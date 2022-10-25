@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CaminhaoController;
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ListaController;
+use App\Http\Controllers\ListarControllerCaminhao;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,7 @@ Route::get('/editar-caminhao',[CaminhaoController::class,'MostrarEditarCaminhao'
 Route::get('/cadastrar-caminhao',[CaminhaoController::class,'FormularioCadastro'])->name('cadastrar-caminhao');
 Route::post('/cadastrar-caminhao', [CaminhaoController::class,'SalvarBanco'])->name('salvar-banco');
 Route::get('/alterar-caminhao/{registrosCaminhoes}',[CaminhaoController::class,'MostrarAlterarCaminhao'])->name('alterar-caminhao');
+Route::put('/editar-caminhao/{registrosCaminhoes}',[CaminhaoController::Class,'AlterarBancoCaminhao'])->name('alterar-banco-caminhao');
 //delete
 Route::delete('/editar-caminhao/{registrosCaminhoes}',[CaminhaoController::class,'ApagarBancoCaminhao'])->name('apagar-caminhao');
 
@@ -34,7 +37,9 @@ Route::get('/cadastrar-carro', [CarroController::class,'FormularioCadastroCarro'
 Route::post('/cadastrar-carro', [CarroController::class,'SalvarBancoCarro'])->name('salvar-banco-carro');
 Route::get('/editar-carro',[CarroController::class,'MostrarEditarCarro'])->name('editar-carro');
 Route::get('/alterar-carro',[CarroController::class,'MostrarAlterarCarro'])->name('alterar-carro');
+Route::put('/editar-carro/{registrosCarros}',[CarroController::Class,'AlterarBancoCarro'])->name('alterar-banco-carro');
 //delete
 Route::delete('/editar-carro/{registrosCarros}',[CarroController::class,'ApagarBancoCarro'])->name('apagar-carro');
 
 Route::get('/ListarCarro',[ListaController::class,'mostrar']);
+Route::get('/listarCaminhao',[ListarControllerCaminhao::class,'mostrar']);

@@ -12,12 +12,17 @@ class CarroController extends Controller
         return view('cadastrarCarro');
     } 
 
-    public function MostrarEditarCarro(){
+    public function MostrarEditarCarro(Request $request){
 
-        $dadosCarro = Carros::all();
+        $dadosCarro = Carros::query();
+        $dadosCarro->when($request->marca, function($query, $vl){
+            $query->where('marca', 'like', '%'.$vl.'%');
+        });
+        $dadosCarro = $dadosCarro->get();
+
         //dd($dadosCaminhao);
-    
-        return view('editarCarro', ['registrosCarro' => $dadosCarro]);
+        
+        return view('editarCarro',['registrosCarro' => $dadosCarro]);
     }
 
     public function SalvarBancoCarro(Request $request){
@@ -31,7 +36,7 @@ class CarroController extends Controller
         Carros::create($dadosCarro);
         return Redirect::route('home');
     }
-
+    
     public function ApagarBancoCarro(Carros $registrosCarros){
         //dd($registrosCaminhoes);
         $registrosCarros->delete();
@@ -41,5 +46,21 @@ class CarroController extends Controller
 
     public function MostrarAlterarCarro(Carros $registrosCarros){
         return view('alterarCarro',['registrosCarros' => $registrosCarros]);
-}
+
+    }
+    public function AlterarBancoCarro(Carros $registrosCarros, Request $request){
+        $banco = $request->validate([
+            'modelo' => 'string|required',
+            'marca' => 'string|required',
+            'ano' => 'string|required',
+            'cor' => 'string|required',
+            'valor' => 'string|required'
+        ]);
+
+    $registrosCarros->fill($banco);
+    $registrosCarros->save();
+    
+    return Redirect::route('editar-carro');
+    //dd($registrosCaminhoes);
+    }
 }

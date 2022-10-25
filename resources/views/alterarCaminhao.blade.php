@@ -2,8 +2,9 @@
 @section('content')
 <section>
 <div class="container cadastroCaminhao">
-<form class="row g-3" method="post" action="{{route('salvar-banco')}}">
+<form class="row g-3" method="post" action="{{route('alterar-banco-caminhao',$registrosCaminhoes->id)}}">
   @csrf
+  @method('put')
   <div class="col-md-12">
     <label for="inputModelo" class="form-label">Modelo</label>
     <input type="text" name="modelo" value="{{old('modelo',$registrosCaminhoes->modelo)}}" class="form-control" id="inputModelo" placeholder="Fusca">
@@ -37,7 +38,7 @@
  
   <div class="col-md-12">
     <label for="inputZip" class="form-label">Valor</label>
-    <input type="text"  class="form-control" name="valor" value="{{old('valor',$registrosCaminhoes->valor)}}" id="inputZip" placeholder="25.660,23">
+    <input type="text" name="valor" value="{{old('valor',$registrosCaminhoes->valor)}}" class="form-control" id="inputZip" placeholder="25.660,23">
     @error('valor')
     <div>Preencher o campo Valor.</div>
     @enderror
